@@ -20,7 +20,7 @@ public class StudentRecordApplication {
         SpringApplication.run(StudentRecordApplication.class, args);
     }
 
-    @Bean
+    /*@Bean
     public CorsFilter corsFilter(){
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowCredentials(true);
@@ -37,5 +37,5 @@ public class StudentRecordApplication {
         UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
         urlBasedCorsConfigurationSource.registerCorsConfiguration("/**" , corsConfiguration);
         return new CorsFilter(urlBasedCorsConfigurationSource);
-    }
+    }*/
 }
