@@ -36,7 +36,7 @@ public class StudentController {
    }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<Student>getStudentById(@PathVariable("id") int id){
+    public ResponseEntity<Student>getStudentById(@PathVariable(value = "id") int id){
         return new ResponseEntity<>(studentService.getStudentById(id),HttpStatus.OK);
     }
 
@@ -46,7 +46,7 @@ public class StudentController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?>deleteStudent(@PathVariable("id") int id){
+    public ResponseEntity<?>deleteStudent(@PathVariable(value = "id") Integer id){
         studentService.deleteStudent(id);
        return new ResponseEntity<>(HttpStatus.OK);
     }

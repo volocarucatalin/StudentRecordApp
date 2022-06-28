@@ -10,7 +10,7 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_generator")
     @SequenceGenerator(name = "student_generator", sequenceName = "student_seq", allocationSize = 50)
-    private int id;
+    private Integer id;
 
     @Column
     private String studentFirstName;
@@ -39,12 +39,12 @@ public class Student {
     public Student() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int ID) {
-        this.id = ID;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setStudentId(String studentId) {

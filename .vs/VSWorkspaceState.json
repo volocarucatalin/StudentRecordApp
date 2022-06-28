@@ -6,10 +6,11 @@
     "\\src\\main\\java",
     "\\src\\main\\java\\com",
     "\\src\\main\\java\\com\\studentrecord",
-    "\\src\\main\\java\\com\\studentrecord\\controller",
     "\\src\\main\\java\\com\\studentrecord\\entity",
+    "\\src\\main\\java\\com\\studentrecord\\repository",
+    "\\src\\main\\java\\com\\studentrecord\\request",
     "\\src\\main\\resources"
   ],
-  "SelectedNode": "\\src\\main\\java\\com\\studentrecord\\controller\\StudentController.java",
+  "SelectedNode": "\\src\\main\\java\\com\\studentrecord\\entity\\Student.java",
   "PreviewInSolutionExplorer": false
 }

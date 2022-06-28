@@ -60,7 +60,8 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
-    public void deleteStudent(int id){
+    public void deleteStudent(Integer id){
+        //int ID = Integer.parseInt(id);
         studentRepository.deleteById(id);
 
     }
