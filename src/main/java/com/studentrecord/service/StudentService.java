@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -27,7 +26,7 @@ public class StudentService {
     public int  createStudent(StudentRequest studentRequest) {
         List<Student> students = studentRepository.findAll();
 
-        Student student = new Student();
+        Student student = new Student() ;
         student.setStudentFirstName(studentRequest.getStudentFirstName());
         student.setStudentLastName(studentRequest.getStudentLastName());
         Character ch = student.getStudentFirstName().toCharArray()[0];
@@ -36,7 +35,7 @@ public class StudentService {
         id .append(ch);
         id .append(ch1);
         id .append(RandomId.randomId());
-        student.setStudentId(String.valueOf(id));
+        student.setStudentUniqueCode(String.valueOf(id));
         return studentRepository.save(student).getId();
     }
 
@@ -51,8 +50,8 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    public Student getStudentById(int id) {
-        Student student = studentRepository.getById(id);
+    public Student getStudentById(int studentId) {
+        Student student = studentRepository.getById(studentId);
         return student;
     }
 
@@ -60,9 +59,9 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
-    public void deleteStudent(Integer id){
+    public void deleteStudent(Integer studentId){
         //int ID = Integer.parseInt(id);
-        studentRepository.deleteById(id);
+        studentRepository.deleteById(studentId);
 
     }
 }

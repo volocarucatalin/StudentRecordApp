@@ -1,7 +1,7 @@
 package com.studentrecord.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name ="student")
@@ -14,12 +14,12 @@ public class Student {
 
     @Column
     private String studentFirstName;
+
     @Column
     private String studentLastName;
 
-
     @Column
-    private String studentId ;
+    private String studentUniqueCode;
 
     @Column
     private double studentMathGrade;
@@ -47,12 +47,12 @@ public class Student {
         this.id = id;
     }
 
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
+    public void setStudentUniqueCode(String studentId) {
+        this.studentUniqueCode = studentId;
     }
 
-    public String getStudentId() {
-        return studentId;
+    public String getStudentUniqueCode() {
+        return studentUniqueCode;
     }
 
     public String getStudentFirstName() {
@@ -116,12 +116,25 @@ public class Student {
         return "Student{" +
                 "studentFirstName='" + studentFirstName + '\'' +
                 ", studentLastName='" + studentLastName + '\'' +
-                ", studentId=" + studentId +
+                ", studentId=" + studentUniqueCode +
                 ", studentMathGrade=" + studentMathGrade +
                 ", studentEnglishGrade=" + studentEnglishGrade +
                 ", studentBiologyGrade=" + studentBiologyGrade +
                 ", studentScienceGrade=" + studentScienceGrade +
                 ", studentComputerScienceGrade=" + studentComputerScienceGrade +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student)) return false;
+        Student student = (Student) o;
+        return Double.compare(student.getStudentMathGrade(), getStudentMathGrade()) == 0 && Double.compare(student.getStudentEnglishGrade(), getStudentEnglishGrade()) == 0 && Double.compare(student.getStudentBiologyGrade(), getStudentBiologyGrade()) == 0 && Double.compare(student.getStudentScienceGrade(), getStudentScienceGrade()) == 0 && Double.compare(student.getStudentComputerScienceGrade(), getStudentComputerScienceGrade()) == 0 && Objects.equals(getId(), student.getId()) && Objects.equals(getStudentFirstName(), student.getStudentFirstName()) && Objects.equals(getStudentLastName(), student.getStudentLastName()) && Objects.equals(getStudentUniqueCode(), student.getStudentUniqueCode());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getStudentFirstName(), getStudentLastName(), getStudentUniqueCode(), getStudentMathGrade(), getStudentEnglishGrade(), getStudentBiologyGrade(), getStudentScienceGrade(), getStudentComputerScienceGrade());
     }
 }

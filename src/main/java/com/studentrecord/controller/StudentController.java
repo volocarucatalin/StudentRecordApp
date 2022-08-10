@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,19 +36,33 @@ public class StudentController {
        return new ResponseEntity<>(studentService.getAllStudents(),HttpStatus.OK);
    }
 
-    @GetMapping("/find/{id}")
-    public ResponseEntity<Student>getStudentById(@PathVariable(value = "id") int id){
-        return new ResponseEntity<>(studentService.getStudentById(id),HttpStatus.OK);
+    @GetMapping("/find")
+    public ResponseEntity<Student>getStudentById(@PathParam("studentId") Integer studentId){
+        if(studentId != null){
+            return new ResponseEntity<>(studentService.getStudentById(studentId),HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
     }
 
     @PutMapping("/update")
     public ResponseEntity<Student>updateStudent(@RequestBody Student student){
-        return new ResponseEntity<>(studentService.updateStudent(student),HttpStatus.OK);
+       if(student != null) {
+           return new ResponseEntity<>(studentService.updateStudent(student), HttpStatus.OK);
+       }else{
+               return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+           }
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?>deleteStudent(@PathVariable(value = "id") Integer id){
-        studentService.deleteStudent(id);
-       return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<?>deleteStudent(@PathVariable(value="id") Integer studentId){
+       if(studentId != null){
+           studentService.deleteStudent(studentId);
+           return new ResponseEntity<>(HttpStatus.OK);
+       }else{
+           return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+       }
+
     }
 }
