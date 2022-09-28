@@ -1,11 +1,13 @@
 package com.studentrecord.request;
 
+import com.studentrecord.repository.StudentRepository;
+
 import javax.faces.bean.ManagedBean;
 import javax.persistence.Column;
 import java.io.Serializable;
 
 @ManagedBean
-public class StudentRequest implements Serializable {
+public class StudentRequest implements Serializable{
 
     private String studentFirstName;
     private String studentLastName;
@@ -28,4 +30,6 @@ public class StudentRequest implements Serializable {
     public void setStudentLastName(String studentLastName) {
         this.studentLastName = studentLastName;
     }
+
+
 }
